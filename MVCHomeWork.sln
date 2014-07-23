@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B3CDBF
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCHomeWork02", "MVCHomeWork02\MVCHomeWork02.csproj", "{87CBC308-EEF0-4948-BA1F-CB1BCD7CE099}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{F12E0EC1-15EB-4C13-92ED-3F783263FA84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F12E0EC1-15EB-4C13-92ED-3F783263FA84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F12E0EC1-15EB-4C13-92ED-3F783263FA84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87CBC308-EEF0-4948-BA1F-CB1BCD7CE099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87CBC308-EEF0-4948-BA1F-CB1BCD7CE099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87CBC308-EEF0-4948-BA1F-CB1BCD7CE099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87CBC308-EEF0-4948-BA1F-CB1BCD7CE099}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,185 @@
+﻿@using MVCHomeWork02.Models
+
+@model 客戶資料
+
+@{
+    ViewBag.Title = "Edit";
+    var bankList = ViewData.ContainsKey("BankList") ? ViewData["BankList"] as IEnumerable<客戶銀行資訊> : new List<客戶銀行資訊>();
+    var contactList = ViewData.ContainsKey("ContactList") ? ViewData["ContactList"] as IEnumerable<客戶聯絡人> : new List<客戶聯絡人>();
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>客戶資料</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.客戶名稱, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.客戶名稱, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.客戶名稱, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.統一編號, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.統一編號, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.統一編號, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.電話, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.電話, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.電話, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.傳真, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.傳真, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.傳真, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.地址, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.地址, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.地址, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(a => bankList.FirstOrDefault().銀行名稱)
+            </th>
+            <th>
+                @Html.DisplayNameFor(a => bankList.FirstOrDefault().銀行代碼)
+            </th>
+            <th>
+                @Html.DisplayNameFor(a => bankList.FirstOrDefault().分行代碼)
+            </th>
+            <th>
+                @Html.DisplayNameFor(a => bankList.FirstOrDefault().帳戶名稱)
+            </th>
+            <th>
+                @Html.DisplayNameFor(a => bankList.FirstOrDefault().帳戶號碼)
+            </th>
+        </tr>
+
+        @{
+            var bank = bankList.ToList();
+        }
+        @for (int i = 0; i < bank.Count(); i++)
+        {
+            @Html.HiddenFor(modelItem => bank[i].Id)            
+            <tr>
+                <td>
+                    @Html.EditorFor(modelItem => bank[i].銀行名稱)<br/>
+                    @Html.ValidationMessageFor(modelItem => bank[i].銀行名稱, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => bank[i].銀行代碼)<br/>
+                    @Html.ValidationMessageFor(modelItem => bank[i].銀行代碼, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => bank[i].分行代碼)<br/>
+                    @Html.ValidationMessageFor(modelItem => bank[i].分行代碼, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => bank[i].帳戶名稱)<br/>
+                    @Html.ValidationMessageFor(modelItem => bank[i].帳戶名稱, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => bank[i].帳戶號碼)<br/>
+                    @Html.ValidationMessageFor(modelItem => bank[i].帳戶號碼, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        }
+    </table>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(a => contactList.FirstOrDefault().職稱)
+            </th>
+            <th>
+                @Html.DisplayNameFor(a => contactList.FirstOrDefault().姓名)
+            </th>
+            <th>
+                @Html.DisplayNameFor(a => contactList.FirstOrDefault().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(a => contactList.FirstOrDefault().手機)
+            </th>
+            <th>
+                @Html.DisplayNameFor(a => contactList.FirstOrDefault().電話)
+            </th>
+        </tr>
+        @{
+            var contact = contactList.ToList();
+        }
+        @for (int i = 0; i < contact.Count; i++)
+        {
+            @Html.HiddenFor(modelItem => contact[i].Id)
+            <tr>
+                <td>
+                    @Html.EditorFor(modelItem => contact[i].職稱)<br/>
+                    @Html.ValidationMessageFor(modelItem => contact[i].職稱, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => contact[i].姓名)<br/>
+                    @Html.ValidationMessageFor(modelItem => contact[i].姓名, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => contact[i].Email)<br/>
+                    @Html.ValidationMessageFor(modelItem => contact[i].Email, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => contact[i].手機)<br/>
+                    @Html.ValidationMessageFor(modelItem => contact[i].手機, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => contact[i].電話)<br/>
+                    @Html.ValidationMessageFor(modelItem => contact[i].電話, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
